@@ -1,38 +1,139 @@
-/* style.css */
-
+/* system.css */
 body {
     background-color: #055b00;
     margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-h1, h3 {
+    font-family: 'Times New Roman', Times, serif;
     color: white;
-    margin: 0;
-}
-
-.header {
     display: flex;
-    align-items: center;
-    padding: 20px 50px;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh;           /* Full height of the viewport */
+    justify-content: flex-start; /* Align everything at the top */
 }
 
-.header img {
-    width: 50px;
-    height: auto;
-    margin-right: 15px;
+/* Page Header */
+.page-header {
+    width: 100%;
+    padding: 15px 50px; /* Reduced padding to move the header closer to the top */
+    background-color: #055b00; /* Header background */
+}
+
+.header-content {
+    display: flex;
+    justify-content: flex-start; /* Align content to the left */
+    align-items: center; /* Center vertically */
+    margin-left: 60px;  /* Added left margin */
 }
 
 .title-group {
     display: flex;
-    align-items: baseline;
+    align-items: center; /* Align h1 and h3 horizontally */
 }
 
 .title-group h1 {
-    font-size: 48px;
-    margin-right: 10px;
+    font-size: 58px;
+    margin: 0 10px 0 0; /* Space between h1 and h3 */
 }
 
 .title-group h3 {
-    font-size: 28px;
+    font-size: 38px;
+    margin: 0;
+}
+
+/* Main Content Section */
+.main-content {
+    display: flex;
+    justify-content: space-between; /* Space between login form and image */
+    align-items: center; /* Center vertically */
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 10px; /* Reduced top margin for the main content */
+}
+
+.login-container {
+    width: 45%;  /* Adjust the width of the login box */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0px; /* Removed or reduced margin from the top */
+}
+
+.aloha-message {
+    text-align: center;  /* Center the text */
+    font-size: 50px;     /* Adjust font size */
+    color: #055b00;      /* Matching the primary color */
+    margin-bottom: 15px; /* Space between Aloha! and the email input */
+}
+
+.aloha-message p {
+    margin: 0;           /* Remove default margin for the paragraph */
+    font-weight: bold;   /* Make the text bold */
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #055b00;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #049100;
+}
+
+/* Image Container */
+.image-container {
+    width: 50%; /* Adjust the width of the image */
+    padding: 30px;
+    text-align: center; /* Center the image */
+    margin-left: 50px;
+}
+
+.Mascot {
+    width: 100%;   /* Make the image scale within the container */
+    max-width: 700px; /* Limit the image size */
+    height: auto;  /* Maintain aspect ratio */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .login-container {
+        width: 100%; /* Make the login form take full width on mobile */
+        margin-bottom: 20px; /* Add space below on smaller screens */
+    }
+
+    .image-container {
+        width: 100%; /* Make the image take full width on mobile */
+    }
 }
