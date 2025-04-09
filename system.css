@@ -1,0 +1,38 @@
+/* style.css */
+
+body {
+    background-color: #055b00;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1, h3 {
+    color: white;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.header img {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.title-group {
+    display: flex;
+    align-items: baseline;
+}
+
+.title-group h1 {
+    font-size: 48px;
+    margin-right: 10px;
+}
+
+.title-group h3 {
+    font-size: 28px;
+}
