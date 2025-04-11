@@ -1,20 +1,70 @@
+/* Fonts */
+@font-face {
+    font-family: 'GrandHeavy';
+    src: url('fonts/Agrandir-GrandHeavy.otf') format('opentype');
+}
+@font-face {
+    font-family: 'GrandLight';
+    src: url('fonts/Agrandir-GrandLight.otf') format('truetype');
+}
+@font-face {
+    font-family: 'Regular';
+    src: url('fonts/Agrandir-Regular.otf') format('truetype');
+}
+@font-face {
+    font-family: 'Narrow';
+    src: url('fonts/Agrandir-Narrow.otf') format('truetype');
+}
+@font-face {
+    font-family: 'TextBold';
+    src: url('fonts/Agrandir-TextBold.otf') format('truetype');
+}
+@font-face {
+    font-family: 'ThinItalic';
+    src: url('fonts/Agrandir-ThinItalic.otf') format('truetype');
+}
+@font-face {
+    font-family: 'Tight';
+    src: url('fonts/Agrandir-Tight.otf') format('truetype');
+}
+@font-face {
+    font-family: 'WideLight';
+    src: url('fonts/Agrandir-WideLight.otf') format('truetype');
+}
+
+/* Background Image Overlay */
+.background-overlay {
+    position: absolute;
+    top: -80px; /* move image higher */
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Body and Page Layout */
 body {
     background-color: #055b00;
     margin: 0;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'WideLight';
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     justify-content: flex-start;
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* Page Header */
+/* Header */
 .page-header {
     width: 100%;
     padding: 15px 50px;
     background-color: #055b00;
+    position: relative;
+    z-index: 10;
 }
 
 .header-content {
@@ -31,15 +81,15 @@ body {
 
 .title-group h1 {
     font-size: 58px;
-    margin: 0 10px 0 0;
+    margin: 15px 10px 0 0;
 }
 
 .title-group h3 {
-    font-size: 38px;
-    margin: 0;
+    font-size: 33px;
+    margin: 0 10px -20px;
 }
 
-/* Main Content Section */
+/* Main Section */
 .main-content {
     display: flex;
     justify-content: space-between;
@@ -49,9 +99,11 @@ body {
     max-width: 1200px;
     margin-top: 10px;
     gap: 30px;
+    position: relative;
+    z-index: 10;
 }
 
-/* Mascot on the left */
+/* Mascot */
 .image-container {
     order: 1;
     width: 50%;
@@ -67,42 +119,30 @@ body {
     margin-left: -50px;
 }
 
-/* Login form on the right */
+/* Login Box */
 .login-container {
     order: 2;
     width: 30%;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgb(248, 247, 245);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 30px; 
-    margin-right: 70px;
+    margin-top: 40px;
+    margin-right: 95px;
+    z-index: 10;
+    position: relative;
 }
 
 .login-form {
     width: 100%;
 }
 
-h2 {
+p {
+    font-family: 'TextBold';
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 30px;
     text-align: center;
-}
-
-.aloha-message {
-    text-align: center;
-    font-size: 50px;
     color: #055b00;
-    margin-bottom: 15px;
-}
-
-.aloha-message p {
-    margin: 0;
-    font-weight: bold;
-}
-
-.form-group {
-    margin-bottom: 20px;
 }
 
 label {
@@ -110,6 +150,8 @@ label {
     margin-bottom: 5px;
     font-size: 14px;
     font-weight: bold;
+    color: #055b00;
+    font-family: 'Regular';
 }
 
 input {
@@ -118,6 +160,8 @@ input {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
+    font-family: 'Regular';
+    margin-bottom: 20px;
 }
 
 button {
@@ -129,13 +173,15 @@ button {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    font-family: 'TextBold';
+    margin-top: 20px;
 }
 
 button:hover {
     background-color: #049100;
 }
 
-/* Mobile responsiveness */
+/* Mobile Responsive */
 @media (max-width: 600px) {
     .main-content {
         flex-direction: column;
