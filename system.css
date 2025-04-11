@@ -1,38 +1,37 @@
-/* system.css */
 body {
     background-color: #055b00;
     margin: 0;
     font-family: 'Times New Roman', Times, serif;
     color: white;
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center horizontally */
-    height: 100vh;           /* Full height of the viewport */
-    justify-content: flex-start; /* Align everything at the top */
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: flex-start;
 }
 
 /* Page Header */
 .page-header {
     width: 100%;
-    padding: 15px 50px; /* Reduced padding to move the header closer to the top */
-    background-color: #055b00; /* Header background */
+    padding: 15px 50px;
+    background-color: #055b00;
 }
 
 .header-content {
     display: flex;
-    justify-content: flex-start; /* Align content to the left */
-    align-items: center; /* Center vertically */
-    margin-left: 60px;  /* Added left margin */
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 60px;
 }
 
 .title-group {
     display: flex;
-    align-items: center; /* Align h1 and h3 horizontally */
+    align-items: center;
 }
 
 .title-group h1 {
     font-size: 58px;
-    margin: 0 10px 0 0; /* Space between h1 and h3 */
+    margin: 0 10px 0 0;
 }
 
 .title-group h3 {
@@ -43,39 +42,63 @@ body {
 /* Main Content Section */
 .main-content {
     display: flex;
-    justify-content: space-between; /* Space between login form and image */
-    align-items: center; /* Center vertically */
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 20px;
     width: 100%;
     max-width: 1200px;
-    margin-top: 10px; /* Reduced top margin for the main content */
+    margin-top: 10px;
+    gap: 30px;
 }
 
+/* Mascot on the left */
+.image-container {
+    order: 1;
+    width: 50%;
+    padding: 30px;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.Mascot {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-left: -50px;
+}
+
+/* Login form on the right */
 .login-container {
-    width: 45%;  /* Adjust the width of the login box */
+    order: 2;
+    width: 30%;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 0px; /* Removed or reduced margin from the top */
+    margin-top: 30px; 
+    margin-right: 70px;
 }
 
-.aloha-message {
-    text-align: center;  /* Center the text */
-    font-size: 50px;     /* Adjust font size */
-    color: #055b00;      /* Matching the primary color */
-    margin-bottom: 15px; /* Space between Aloha! and the email input */
-}
-
-.aloha-message p {
-    margin: 0;           /* Remove default margin for the paragraph */
-    font-weight: bold;   /* Make the text bold */
+.login-form {
+    width: 100%;
 }
 
 h2 {
     margin-bottom: 20px;
     font-size: 24px;
     text-align: center;
+}
+
+.aloha-message {
+    text-align: center;
+    font-size: 50px;
+    color: #055b00;
+    margin-bottom: 15px;
+}
+
+.aloha-message p {
+    margin: 0;
+    font-weight: bold;
 }
 
 .form-group {
@@ -112,28 +135,15 @@ button:hover {
     background-color: #049100;
 }
 
-/* Image Container */
-.image-container {
-    width: 50%; /* Adjust the width of the image */
-    padding: 30px;
-    text-align: center; /* Center the image */
-    margin-left: 50px;
-}
-
-.Mascot {
-    width: 100%;   /* Make the image scale within the container */
-    max-width: 700px; /* Limit the image size */
-    height: auto;  /* Maintain aspect ratio */
-}
-
 /* Mobile responsiveness */
 @media (max-width: 600px) {
-    .login-container {
-        width: 100%; /* Make the login form take full width on mobile */
-        margin-bottom: 20px; /* Add space below on smaller screens */
+    .main-content {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .image-container {
-        width: 100%; /* Make the image take full width on mobile */
+    .login-container, .image-container {
+        width: 90%;
+        margin: 0 auto 20px;
     }
 }
