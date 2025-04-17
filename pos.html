@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mamajo's</title>
+  <link rel="stylesheet" href="pos.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <img src="images/Mamajo's Logo Empanada NO BG.png" alt="Logo" />
+        <span>Mamajo's</span>
+      </div>
+      <div id="datetime-container">
+        <div id="date"></div>
+        <div id="time"></div>
+      </div>
+    </header>
+
+    <div class="content-area">
+      <div class="sidebar">
+        <div class="tab-links">
+          <a href="homepage.html">Home</a>
+          <a href="#" class="active">Point of Sales</a>
+          <a href="#">Inventory</a>
+          <a href="#">Sales Report</a>
+          <a href="#">Feedback</a>
+        </div>
+        <div class="burger-menu">
+          <div class="burger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="product-grid">
+          <div class="product">
+            <img src="images/1. Chicken Potato.png" alt="Chicken Potato Regular">
+            <p>Chicken Potato - Regular</p>
+          </div>
+          <div class="product">
+            <img src="images/2. Ham & Cheese.png" alt="Ham & Cheese Regular">
+            <p>Ham & Cheese - Regular</p>
+          </div>
+          <div class="product">
+            <img src="images/3. Creamy Spinach.png" alt="Creamy Spinach Regular">
+            <p>Creamy Spinach - Regular</p>
+          </div>
+          <div class="product">
+            <img src="images/4. Pork Asado.png" alt="Pork Asado Regular">
+            <p>Pork Asado - Regular</p>
+          </div>
+          <div class="product">
+            <img src="images/1. Chicken Potato.png" alt="Chicken Potato Medium">
+            <p>Chicken Potato - Medium</p>
+          </div>
+          <div class="product">
+            <img src="images/2. Ham & Cheese.png" alt="Ham & Cheese Medium">
+            <p>Ham & Cheese - Medium</p>
+          </div>
+          <div class="product">
+            <img src="images/3. Creamy Spinach.png" alt="Creamy Spinach Medium">
+            <p>Creamy Spinach - Medium</p>
+          </div>
+          <div class="product">
+            <img src="images/4. Pork Asado.png" alt="Pork Asado Medium">
+            <p>Pork Asado - Medium</p>
+          </div>
+          <div class="product">
+            <img src="images/1. Chicken Potato.png" alt="Chicken Potato Bite-size">
+            <p>Chicken Potato - Bite-size</p>
+          </div>
+          <div class="product">
+            <img src="images/2. Ham & Cheese.png" alt="Ham & Cheese Bite-size">
+            <p>Ham & Cheese - Bite-size</p>
+          </div>
+          <div class="product">
+            <img src="images/3. Creamy Spinach.png" alt="Creamy Spinach Bite-size">
+            <p>Creamy Spinach - Bite-size</p>
+          </div>
+          <div class="product">
+            <img src="images/4. Pork Asado.png" alt="Pork Asado Bite-size">
+            <p>Pork Asado - Bite-size</p>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h3>Order ID: 100012</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="order-items">
+              <tr>
+                <td>Chicken Potato - Regular</td>
+                <td>₱30</td>
+                <td>2</td>
+                <td>₱60</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"><strong>Total</strong></td>
+                <td><strong>₱60</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+          <button class="checkout-button">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('date').textContent = now.toLocaleDateString(undefined, options);
+      document.getElementById('time').textContent = now.toLocaleTimeString();
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+  </script>
+</body>
+</html>

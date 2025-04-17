@@ -1,0 +1,184 @@
+/* pos.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #055b00;
+  padding: 15px 20px;
+  color: #fff;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo-container span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#datetime-container {
+  text-align: right;
+}
+
+#date {
+  font-size: 14px;
+  color: #ff9533;
+}
+
+#time {
+  font-size: 16px;
+}
+
+.content-area {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #ff9533;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.tab-links a {
+  padding: 20px;
+  display: block;
+  color: #d82b12;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tab-links a:hover,
+.tab-links a.active {
+  background-color: #d82b12;
+  color: #fff;
+}
+
+.burger-menu {
+  padding: 15px 20px;
+}
+
+.burger-icon span {
+  display: block;
+  height: 4px;
+  background-color: #055b00;
+  margin: 5px 0;
+  border-radius: 2px;
+  width: 25px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 15px;
+  flex: 2;
+}
+
+.product {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product p {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.order-summary {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  height: fit-content;
+  align-self: flex-start;
+}
+
+.order-summary h3 {
+  margin-top: 0;
+}
+
+.order-summary table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.order-summary th,
+.order-summary td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-summary tfoot td {
+  font-weight: bold;
+}
+
+.checkout-button {
+  margin-top: 15px;
+  background-color: #055b00;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+  background-color: #044a00;
+}
