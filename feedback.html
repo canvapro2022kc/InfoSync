@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mamajo's Dashboard</title>
+  <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="images/Mamajo's Logo Empanada NO BG.png" alt="Logo" />
+      <span>Mamajo's</span>
+    </div>
+    <div id="datetime-container">
+      <div id="date"></div>
+      <div id="time"></div>
+    </div>
+  </header>
+
+  <!-- Body Layout -->
+  <div class="body-wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="tab-links">
+        <a href="#">Home</a>
+        <a href="#">Point of Sales</a>
+        <a href="#">Inventory</a>
+        <a href="#">Sales Report</a>
+        <a href="#" class="active">Feedback</a>
+      </div>
+      <div class="burger-menu">
+        <div class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="feedback-wrapper">
+        <img src="images/Feedback QR.png" alt="Feedback QR">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('date').textContent = now.toLocaleDateString(undefined, options);
+      document.getElementById('time').textContent = now.toLocaleTimeString();
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+  </script>
+</body>
+</html>
