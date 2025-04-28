@@ -113,10 +113,11 @@
 
   .inventory-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Aligns the cards to the left */
     align-items: center;
     padding: 30px;
     gap: 30px;
+    margin-left: 97px; /* Adds space on the left to move the cards right */
   }
 
   .card {
@@ -234,7 +235,7 @@
           <a href="homepage.html">Home</a>
           <a href="pos.html">Point of Sales</a>
           <a href="inventory.html" class="active">Inventory</a>
-          <a href="#">Sales Report</a>
+          <a href="salesreport.html">Sales Report</a>
           <a href="#">Feedback</a>
         </div>
         <div class="burger-menu">
@@ -246,10 +247,7 @@
         </div>
       </div>
 
-
-
       <div class="inventory-container">
-
         <!-- Regular -->
         <div class="card">
           <div class="card-title">Regular</div>
@@ -318,8 +316,8 @@
             <button class="save-btn">Save</button>
           </div>
         </div>
-
       </div>
+
       <script>
         function updateDateTime() {
           const now = new Date();

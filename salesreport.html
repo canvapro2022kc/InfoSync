@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sales Report - Mamajo's</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    @font-face {
+      font-family: 'AgrandirTextBold';
+      src: url('fonts/Agrandir-TextBold.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'AgrandirRegular';
+      src: url('fonts/Agrandir-Regular.otf') format('opentype');
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'AgrandirRegular', Arial, sans-serif;
+      background-color: #f5f5f5;
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #055b00;
+      padding: 15px 20px;
+      color: #fff;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo-container span {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #datetime-container {
+      text-align: right;
+    }
+
+    #date {
+      font-size: 14px;
+      color: #ff9533;
+    }
+
+    #time {
+      font-size: 16px;
+    }
+
+    .content-area {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #ff9533;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+
+    .tab-links a {
+      padding: 20px;
+      display: block;
+      color: #d82b12;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .tab-links a:hover,
+    .tab-links a.active {
+      background-color: #d82b12;
+      color: #fff;
+    }
+
+    .burger-menu {
+      padding: 15px 20px;
+    }
+
+    .burger-icon span {
+      display: block;
+      height: 4px;
+      background-color: #055b00;
+      margin: 5px 0;
+      border-radius: 2px;
+      width: 25px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .inventory-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 30px;
+      padding: 20px;
+      width: 320px;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+      background-color: #f5f5f5;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      border-radius: 20px;
+      font-size: 28px;
+      font-family: 'AgrandirTextBold', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 300px !important;
+    }
+
+    .flavor-icons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 280px;
+      position: relative;
+    }
+
+    .icon-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .icon-wrapper img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .icon-wrapper:nth-child(1) img { margin-left: 39px; }
+    .icon-wrapper:nth-child(2) img { margin-left: 32px; }
+    .icon-wrapper:nth-child(3) img { margin-left: 28px; }
+    .icon-wrapper:nth-child(4) img { margin-left: 27px; }
+
+    .total-sales {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #055b00;
+    }
+
+    .date-label {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #777;
+    }
+
+    .view-history-button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #055a00;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .view-history-button:hover {
+      background-color: #044700;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <header>
+    <div class="logo-container">
+      <img src="images/Mamajo's Logo Empanada NO BG.png" alt="Mamajo's Logo" />
+      <span>Mamajo's</span>
+    </div>
+    <div id="datetime-container">
+      <div id="date"></div>
+      <div id="time"></div>
+    </div>
+  </header>
+
+  <div class="content-area">
+    <div class="sidebar">
+      <div class="tab-links">
+        <a href="homepage.html">Home</a>
+        <a href="pos.html">Point of Sales</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="#" class="active">Sales Report</a>
+        <a href="#">Feedback</a>
+      </div>
+      <div class="burger-menu">
+        <div class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="inventory-container">
+
+        <!-- Daily Sales Card -->
+        <div class="card">
+          <div class="card-title">Daily Sales</div>
+          <canvas id="dailySalesChart"></canvas>
+          <div class="flavor-icons">
+            <div class="icon-wrapper"><img src="images/1. Chicken Potato.png" alt="Chicken Potato" /></div>
+            <div class="icon-wrapper"><img src="images/2. Ham & Cheese.png" alt="Ham and Cheese" /></div>
+            <div class="icon-wrapper"><img src="images/3. Creamy Spinach.png" alt="Creamy Spinach" /></div>
+            <div class="icon-wrapper"><img src="images/4. Pork Asado.png" alt="Pork Asado" /></div>
+          </div>
+          <div class="total-sales" id="dailyTotalSales"></div>
+          <div class="date-label" id="dailyDateLabel"></div>
+          <button class="view-history-button">View History</button>
+        </div>
+
+        <!-- Weekly Sales Card -->
+        <div class="card">
+          <div class="card-title">Weekly Sales</div>
+          <canvas id="weeklySalesChart"></canvas>
+          <div class="flavor-icons">
+            <div class="icon-wrapper"><img src="images/1. Chicken Potato.png" alt="Chicken Potato" /></div>
+            <div class="icon-wrapper"><img src="images/2. Ham & Cheese.png" alt="Ham and Cheese" /></div>
+            <div class="icon-wrapper"><img src="images/3. Creamy Spinach.png" alt="Creamy Spinach" /></div>
+            <div class="icon-wrapper"><img src="images/4. Pork Asado.png" alt="Pork Asado" /></div>
+          </div>
+          <div class="total-sales" id="weeklyTotalSales"></div>
+          <div class="date-label" id="weeklyDateLabel"></div>
+          <button class="view-history-button">View History</button>
+        </div>
+
+        <!-- Monthly Sales Card -->
+        <div class="card">
+          <div class="card-title">Monthly Sales</div>
+          <canvas id="monthlySalesChart"></canvas>
+          <div class="flavor-icons">
+            <div class="icon-wrapper"><img src="images/1. Chicken Potato.png" alt="Chicken Potato" /></div>
+            <div class="icon-wrapper"><img src="images/2. Ham & Cheese.png" alt="Ham and Cheese" /></div>
+            <div class="icon-wrapper"><img src="images/3. Creamy Spinach.png" alt="Creamy Spinach" /></div>
+            <div class="icon-wrapper"><img src="images/4. Pork Asado.png" alt="Pork Asado" /></div>
+          </div>
+          <div class="total-sales" id="monthlyTotalSales"></div>
+          <div class="date-label" id="monthlyDateLabel"></div>
+          <button class="view-history-button">View History</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function updateDateTime() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('date').textContent = now.toLocaleDateString(undefined, options);
+    document.getElementById('time').textContent = now.toLocaleTimeString();
+  }
+
+  function updateSalesDates() {
+    const now = new Date();
+
+    // Daily Sales
+    document.getElementById('dailyDateLabel').textContent = `Date: ${now.toLocaleDateString()}`;
+
+    // Weekly Sales
+    const startOfWeek = new Date(now);
+    startOfWeek.setDate(now.getDate() - now.getDay() - 6);
+    const endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(startOfWeek.getDate() + 6);
+    document.getElementById('weeklyDateLabel').textContent = `Week: ${startOfWeek.toLocaleDateString()} - ${endOfWeek.toLocaleDateString()}`;
+
+    // Monthly Sales
+    const lastMonth = new Date(now);
+    lastMonth.setMonth(now.getMonth() - 1);
+    document.getElementById('monthlyDateLabel').textContent = `Month: ${lastMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}`;
+
+    // Total Sales Text
+    document.getElementById('dailyTotalSales').textContent = `Total Sales: ₱${(1000 + 800 + 600 + 400).toLocaleString()}`;
+    document.getElementById('weeklyTotalSales').textContent = `Total Sales: ₱${(4200 + 3900 + 4100 + 3800).toLocaleString()}`;
+    document.getElementById('monthlyTotalSales').textContent = `Total Sales: ₱${(15000 + 13500 + 14000 + 13000).toLocaleString()}`;
+  }
+
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
+  updateSalesDates();
+
+  const commonOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: { color: '#055b00', font: { weight: 'bold' }}
+      },
+      x: {
+        ticks: { display: false }
+      }
+    }
+  };
+
+  new Chart(document.getElementById('dailySalesChart'), {
+    type: 'bar',
+    data: {
+      labels: ['', '', '', ''],
+      datasets: [{
+        label: '₱ Sales',
+        data: [1000, 800, 600, 400],
+        backgroundColor: ['#e34d1b', '#fe9433', '#055a00', '#a6a6a6']
+      }]
+    },
+    options: commonOptions
+  });
+
+  new Chart(document.getElementById('weeklySalesChart'), {
+    type: 'bar',
+    data: {
+      labels: ['', '', '', ''],
+      datasets: [{
+        label: '₱ Sales',
+        data: [4200, 3900, 4100, 3800],
+        backgroundColor: ['#e34d1b', '#fe9433', '#055a00', '#a6a6a6']
+      }]
+    },
+    options: commonOptions
+  });
+
+  new Chart(document.getElementById('monthlySalesChart'), {
+    type: 'bar',
+    data: {
+      labels: ['', '', '', ''],
+      datasets: [{
+        label: '₱ Sales',
+        data: [15000, 13500, 14000, 13000],
+        backgroundColor: ['#e34d1b', '#fe9433', '#055a00', '#a6a6a6']
+      }]
+    },
+    options: commonOptions
+  });
+</script>
+
+</body>
+</html>
